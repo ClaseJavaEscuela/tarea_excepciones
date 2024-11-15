@@ -4,6 +4,7 @@
  */
 package Ejercicio_9;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,6 +17,16 @@ public class Main {
         
         try {
             miRegistro.agregarActivida(new Actividad(new Date(),"esta tarea es nuea"));
+            
+            //miRegistro.agregarActivida(new Actividad(new Date(),"esta tarea es nuea"));
+            //insertar una actividad con una fecha de mañana
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(new Date());
+            calendario.add(Calendar.DAY_OF_MONTH,5);
+            
+            Date fechaFutura = calendario.getTime();
+            miRegistro.agregarActivida(new Actividad(fechaFutura,"Actividad en el futuro"));
+            
         } catch (DuplicateActivityException e) {
             System.out.println("Erro: "+e.getMessage());
         }catch(IllegalArgumentException e ){

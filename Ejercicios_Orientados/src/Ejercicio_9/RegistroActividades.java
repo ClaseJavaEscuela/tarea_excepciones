@@ -5,6 +5,7 @@
 package Ejercicio_9;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,14 +24,14 @@ public class RegistroActividades {
     private List<Actividad> registroActividades;
 
     public RegistroActividades() {
-        this.registroActividades = registroActividades;
+        this.registroActividades = new ArrayList<>();
     }
     
     private boolean fechaInvalida(Date fecha){
         Date fechaActual = new Date();
         
         
-        if(fechaActual.after(fecha)){
+        if(fecha.after(fechaActual)){
             return true;
         }
         return false;
@@ -55,7 +56,7 @@ public class RegistroActividades {
         }
         
         if(fechaInvalida(nuevaActividad.getFecha())){
-            throw new IllegalArgumentException("La fecha no es valida");
+            throw new IllegalArgumentException("La fecha es del futuro, asi que no es valida");
         }
         
         registroActividades.add(nuevaActividad);
